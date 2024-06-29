@@ -1,0 +1,38 @@
+reference Hg38
+
+Raw data GRCh38_full_analysis_set_plus_decoy_hla.fa is wget from from https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/:
+
+Indexs are from bwa index and samtools faidx
+The following two are generated for GATK requirement (https://gatk.broadinstitute.org/hc/en-us/articles/360035531652-FASTA-Reference-genome-format):
+GRCh38_full_analysis_set_plus_decoy_hla.fa.fai is generated from samtools faidx(ver 1.18)
+GRCh38_full_analysis_set_plus_decoy_hla.dict is from Picard CreateSequenceDictionary
+
+Note:
+The .fai index for GRCh38_full_analysis_set_plus_decoy_hla.fa including the hla records,
+bwa index(ver 0.7.17) will create an additional alias/nickname for this part,
+which makes GRCh38_full_analysis_set_plus_decoy_hla.fa.fai not working with GATK 4.2.1.0 GenotypeGVCFs.
+please use the .fai index from samtools faidx
+
+
+From broad institute:
+DBSNP:
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.idx
+KNOWN:
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi
+GOLD
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Mills_and_1000G_gold_standard.indels.hg38.vcf
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Mills_and_1000G_gold_standard.indels.hg38.vcf.tbi
+OMNI
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_omni2.5.hg38.vcf.gz.tbi
+HIGH
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi
+HAPMAP
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/hapmap_3.3.hg38.vcf.gz.tbi
+AXIOMPOLY
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Axiom_Exome_Plus.genotypes.all_populations.poly.hg38.vcf.gz
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Axiom_Exome_Plus.genotypes.all_populations.poly.hg38.vcf.gz.tbi
