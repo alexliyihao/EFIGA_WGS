@@ -1,0 +1,48 @@
+# syntax=docker/dockerfile:1
+FROM broadinstitute/gatk:4.2.1.0
+ENV GATK="/gatk/gatk"
+
+LABEL project="EFIGA_FBS_FAMILY_WGS"
+LABEL phase="Individual HaplotypeCalling"
+LABEL maintainer="yl4326@cumc.columbia.edu"
+LABEL project_supervisor="bnv2103@cumc.columbia.edu"
+LABEL description="individual haplotyping procedure for EFIGA project"
+
+ENV BWA_VERSION=0.7.17
+ENV SAMBLASTER_VERSION=0.1.26
+ENV SAMTOOLS_VERSION=1.18
+ENV BAMUTIL_VERSION=1.0.14
+ENV SAMBAMBA_VERSION=0.6.6
+
+LABEL bwa_version="$BWA_VERSION"
+LABEL samblaster_version="$SAMBLASTER_VERSION"
+LABEL samtools_version="$SAMTOOLS_VERSION"
+LABEL bamutil_version="$BAMUTIL_VERSION"
+LABEL sambamba_version="$SAMBAMBA_VERSION"
+
+ENV PATH="/root/miniconda3/bin:${PATH}"
+ARG PATH="/root/miniconda3/bin:${PATH}"
+
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN apt-get update -y
+RUN apt-get -y install git make libz-dev
+RUN apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
+RUN conda update -y -n base conda
+RUN conda init
+RUN CONDA_EXPERIMENTAL_SOLVER=classic conda install -n base conda=22.11.0
+RUN CONDA_EXPERIMENTAL_SOLVER=classic conda install -n base conda-libmamba-solver=22.12.0
+RUN conda install -n base conda-libmamba-solver
+RUN conda config --set solver libmamba
+RUN conda config --add channels defaults
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda config --set channel_priority strict
+# Install packages from conda 
+RUN conda install -y bwa=$BWA_VERSION samblaster=$SAMBLASTER_VERSION samtools=$SAMTOOLS_VERSION bamutil=$BAMUTIL_VERSION sambamba=$SAMBAMBA_VERSION
+
+ENV BWA="bwa"
+ENV SAMBLASTER="samblaster"
+ENV SAMTOOLS="samtools"
+ENV BAMUTIL="bam"
+ENV SAMBAMBA="sambamba"
