@@ -3,12 +3,12 @@ FROM broadinstitute/gatk:4.2.1.0
 ENV GATK="/gatk/gatk"
 
 LABEL project="EFIGA_FBS_FAMILY_WGS"
-LABEL phase="Individual HaplotypeCalling"
+LABEL phase="Individual Haplotype Calling"
 LABEL maintainer="yl4326@cumc.columbia.edu"
 LABEL project_supervisor="bnv2103@cumc.columbia.edu"
 LABEL description="individual haplotyping procedure for EFIGA project"
 
-ENV BWA_VERSION=0.7.17
+ENV BWA_VERSION=0.7.15
 ENV SAMBLASTER_VERSION=0.1.26
 ENV SAMTOOLS_VERSION=1.18
 ENV BAMUTIL_VERSION=1.0.14
@@ -39,7 +39,7 @@ RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 RUN conda config --set channel_priority strict
 # Install packages from conda 
-RUN conda install -y bwa=$BWA_VERSION samblaster=$SAMBLASTER_VERSION samtools=$SAMTOOLS_VERSION bamutil=$BAMUTIL_VERSION sambamba=$SAMBAMBA_VERSION
+RUN conda install -y bwa=$BWA_VERSION samblaster=$SAMBLASTER_VERSION samtools=$SAMTOOLS_VERSION bamutil=$BAMUTIL_VERSION sambamba=$SAMBAMBA_VERSION conda-forge::awscli
 
 ENV BWA="bwa"
 ENV SAMBLASTER="samblaster"

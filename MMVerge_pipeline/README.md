@@ -1,23 +1,28 @@
+
 # Memverge EFIGA deployment
 
-This folder includes the testing codes deploying the pkan_pipeline on Memverge
+This folder includes the codes deploying the pipeline on Memverge.
 
-TODO:
+## Cloud Computing Infrastructures
 
-We are having writing I/O issue with [samtools](https://www.htslib.org/) and [bamutils](https://genome.sph.umich.edu/wiki/BamUtil) writing to AWS S3 bucket.
+ - Cloud Services:
+  See *EFIGA_Memverge_juiceFS_approach.png*, we used a JuiceFS file system as a supplement for S3 bucket, for AWS S3 mount to EC2 is unable to handle >95GBs continuous ingress (writing from EC2 & ingress to S3) mount simultaneously. An AWS EBS is fine as well but it's a bit more expensive.
 
-For memverge colleagues:
+ - S3 bucket:
+  See *bucket_file_structure.txt*
 
-1. Mounting setting:
+## Files
 
-- s3://\<bucket\>/P4-41393:/data/P4-41393
-- s3://\<bucket\>/hg38_reference:/data/reference
+### Pipeline Scripts
+For each phase,  we have one folder with three files:
+  - *phase_\<number\>_**.sh*: the actual script running
+  - *mmfloat_stage_\<number\>_submit.sh*: the script submit running script to mmfloat
+  - *mmfloat_stage_\<number\>_batch_submission.sh*: a wrapper submit a batch of jobs from submission script to a specific OpCenter
 
-2. You can skip the following:
-
-- individual_step_cleaned.sh
-- individual_step_with_output.sh
-
-and working on:
-- Step_1_alignment.sh is split into step 1_1 and 1_2, the output of 1_1 is piped into 1_2
-- Step 2_1 is extracted from step_2
+### Supporting Files:
+  All formats are provided, confidential info are neutralized
+  - *opcenter_info.txt*: some metadata used in job submission. The submission should run as follows:
+  **sh ./mmfloat_stage_\<number\>_batch_submission.sh opcenter_info.txt**
+  I didn't left the start and end outside for I use that as my own notes, you can do it yourself as variable $2 and $3
+  - credentials: see *bucket_file_structure.txt*, for the pipeline' login to AWS CLI downloading input fastqs and upload final crams and gvcfs
+  - data_inflow_efiga.txt: see *mmfloat_stage_\<number\>_batch_submission.sh*, providing an overall orders for file uploading and jobs submissions

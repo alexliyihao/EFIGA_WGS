@@ -1,0 +1,38 @@
+/
+/hg38_reference
+/hg38_reference/GRCh38_full_analysis_set_plus_decoy_hla.fa
+all other references...
+# was credential only but now added some miscellaneous stuff...
+/creds
+# the credentials for aws cli
+/creds/credentials
+# recording the finish of multi-threaded phase
+/creds/credentials/overseer_multi_thread.txt
+# recording the finish of single threaded phase (also the whole pipeline)
+/creds/credentials/overseer_single_thread.txt
+# a finished sample
+/prefix_1
+/prefix_1/prefix_1_Progress.log
+/prefix_1/prefix_1_BQSR.cram
+/prefix_1/prefix_1.g.vcf.gz
+/prefix_1/prefix_1.g.vcf.gz.tbi
+/prefix_1/prefix_1_S1_L001_R1_001.fastq.gz
+/prefix_1/prefix_1_S1_L001_R2_001.fastq.gz
+/prefix_1/prefix_1_S1_L002_R1_001.fastq.gz
+/prefix_1/prefix_1_S1_L002_R2_001.fastq.gz
+...
+# a unfinished sample
+/prefix_2
+/prefix_2/prefix_2_Progress.log
+/prefix_2/prefix_2_S1_L001_R1_001.fastq.gz
+/prefix_2/prefix_2_S1_L001_R2_001.fastq.gz
+/prefix_2/prefix_2_S1_L002_R1_001.fastq.gz
+/prefix_2/prefix_2_S1_L002_R2_001.fastq.gz
+...
+# a not started sample
+/prefix_3
+/prefix_3/prefix_3_S1_L001_R1_001.fastq.gz
+/prefix_3/prefix_3_S1_L001_R2_001.fastq.gz
+/prefix_3/prefix_3_S1_L002_R1_001.fastq.gz
+/prefix_3/prefix_4_S1_L002_R2_001.fastq.gz
+...

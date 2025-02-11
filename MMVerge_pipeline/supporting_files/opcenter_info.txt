@@ -1,0 +1,8 @@
+<your opcenter address>
+<your ID>
+<your Password>
+<accessKey of your bucket>
+<secretKey of your bucket>
+<JuiceFS provided from Memverge>
+<the path your JuiceFS will be mount to each instance>
+<the Docker image name registered on Memverge platform>
