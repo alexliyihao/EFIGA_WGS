@@ -19,4 +19,5 @@ mmfloat submit \
   --dataVolume [accessKey=${ACCESSKEY},secret=${SECRETKEY},endpoint=s3.us-east-1.amazonaws.com,mode=rw]s3://<your_bucket_here>/${PREFIX}:/data/${PREFIX} \
   --dataVolume [accessKey=${ACCESSKEY},secret=${SECRETKEY},endpoint=s3.us-east-1.amazonaws.com,mode=rw]s3://<your_bucket_here>/hg38_reference:/data/reference \
   --dataVolume [accessKey=${ACCESSKEY},secret=${SECRETKEY},endpoint=s3.us-east-1.amazonaws.com,mode=rw]s3://<your_bucket_here>/creds:/data/creds \
-  --vmPolicy [spotOnly=true,retryLimit=20,retryInterval=900s]
+  --vmPolicy [spotOnly=true,retryLimit=20,retryInterval=900s] \
+  --withRoot
