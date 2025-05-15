@@ -177,8 +177,8 @@ if [ -s ${TEMP_DIR}/${PREFIX}.g.vcf.gz ] &&
     --include "${PREFIX}.g.vcf.gz.tbi" \
     --include "${PREFIX}_BQSR.cram"
   exit_code_aws_cli=$?
-  echo "All the output copied to S3 bucket with exit code $exit_code - $(date '+%Y-%m-%d %X')"
-  echo "All the output copied to S3 bucket with exit code $exit_code - $(date '+%Y-%m-%d %X')" >> $PROGRESS_LOG
+  echo "All the output copied to S3 bucket with exit code $exit_code_aws_cli - $(date '+%Y-%m-%d %X')"
+  echo "All the output copied to S3 bucket with exit code $exit_code_aws_cli - $(date '+%Y-%m-%d %X')" >> $PROGRESS_LOG
   echo $(ls ${WORKING_DIR})
   if [ $exit_code_aws_cli -eq 0 ] &&
     [ -s ${WORKING_DIR}/${PREFIX}.g.vcf.gz ] &&
